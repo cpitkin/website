@@ -1,0 +1,44 @@
+baseURL = "https://charliepitkin.com"
+languageCode = "en-us"
+title = "Charlie Pitkin"
+theme = "osprey"
+canonifyURLS = true
+disableKinds = ["taxonomy", "taxonomyTerm"]
+
+[Params]
+    tagline = "more coming soon..."
+    author = "Charlie Pitkin"
+    description = "more coming soon..."
+    logoBig = ""
+    logoSmall = ""
+    favicon = ""
+    opengraphImage = ""
+    twitter = "@charlespitkin"
+    linkedin = "charlie-pitkin-b1701423"
+    github = "cpitkin"
+    email = ""
+    googleTagManager = ""
+    highlightJS = true
+    copyright = true
+    credit = true
+    customCSS = false
+    cacheBustCSS = false
+    cacheBustJS = false
+    ajaxFormspree = true
+
+# [[menu.main]]
+#     name = "About"
+#     url  = "/#about"
+#     weight = 1
+# [[menu.main]]
+#     name = "Work"
+#     url  = "/#work"
+#     weight = 2
+# [[menu.main]]
+#     name = "Blog"
+#     url  = "/#blog"
+#     weight = 3
+# [[menu.main]]
+#     name = "Contact"
+#     url  = "/#contact"
+#     weight = 4
