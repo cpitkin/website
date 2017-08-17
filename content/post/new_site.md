@@ -1,7 +1,8 @@
 ---
-title: New Site
-date: {}
+date:
+  undefined: 2017-08-16 21:00:00 -0500
 tags: []
+title: New Site
 
 ---
 
