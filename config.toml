@@ -1,44 +1,60 @@
-baseURL = "https://charliepitkin.com"
+baseURL = "https://charliepitkin.com/"
 languageCode = "en-us"
 title = "Charlie Pitkin"
-theme = "osprey"
-canonifyURLS = true
-disableKinds = ["taxonomy", "taxonomyTerm"]
+theme = "minimal"
 
-[Params]
-    tagline = "more coming soon..."
+[params]
     author = "Charlie Pitkin"
-    description = "more coming soon..."
-    logoBig = "/kodai-ji-garden.png"
-    logoSmall = "/osaka-castle.png"
-    favicon = ""
-    opengraphImage = ""
-    twitter = "@charlespitkin"
-    linkedin = "charlie-pitkin-b1701423"
-    github = "cpitkin"
-    email = ""
-    googleTagManager = ""
-    highlightJS = true
-    copyright = true
-    credit = true
-    customCSS = false
-    cacheBustCSS = false
-    cacheBustJS = false
-    ajaxFormspree = true
+    description = "more coming soon ..."
+    githubUsername = "cpitkin"
+    accent = "white"
+    showBorder = true
+    backgroundColor = "black"
+    font = "Raleway" # should match the name on Google Fonts!
+    highlight = true
+    highlightStyle = "solarized-dark"
+    highlightLanguages = ["go", "haskell", "kotlin", "scala", "swift", "javascript", "shell"]
+
+[[menu.main]]
+    url = "/"
+    name = "Home"
+    weight = 1
 
 # [[menu.main]]
-#     name = "About"
-#     url  = "/#about"
-#     weight = 1
-# [[menu.main]]
-#     name = "Work"
-#     url  = "/#work"
+#     url = "/post/"
+#     name = "Posts"
 #     weight = 2
+#
 # [[menu.main]]
-#     name = "Blog"
-#     url  = "/#blog"
+#     url = "/project/"
+#     name = "Projects"
 #     weight = 3
-# [[menu.main]]
-#     name = "Contact"
-#     url  = "/#contact"
-#     weight = 4
+
+# Social icons to be shown on the right-hand side of the navigation bar
+# The "name" field should match the name of the icon to be used
+# The list of available icons can be found at http://fontawesome.io/icons/
+
+# [[menu.icon]]
+#     url = "mailto:me@example.com"
+#     name = "envelope-o"
+#     weight = 1
+
+[[menu.icon]]
+    url = "https://github.com/cpitkin/"
+    name = "github"
+    weight = 2
+
+[[menu.icon]]
+    url = "https://twitter.com/charlespitkin/"
+    name = "twitter"
+    weight = 3
+
+[[menu.icon]]
+    url = "https://www.linkedin.com/in/charlie-pitkin-b1701423/"
+    name = "linkedin"
+    weight = 4
+
+# [[menu.icon]]
+#     url = "https://www.stackoverflow.com/charlie-pitkin/"
+#     name = "stack-overflow"
+#     weight = 5
