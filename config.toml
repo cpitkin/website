@@ -15,7 +15,6 @@ accent = "black"
 author = "Charlie Pitkin"
 backgroundcolor = "white"
 description = "more coming soon ..."
-# font = "Raleway"
 font = "news cycle"
 githubusername = "cpitkin"
 highlight = true
