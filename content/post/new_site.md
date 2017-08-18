@@ -2,6 +2,7 @@
 date: 2017-08-16 21:00:00 -0500
 tags: []
 title: New Site
+
 ---
 So I decided to not go crazy about all this hosting stuff and make it super simple. The new site is built with Hugo and hosted on Netlify. I just published my first [project](https://www.npmjs.com/package/redirect-test) to npm and want to start helping the open source community. I do a lot of this stuff in my day job but it never hurts to keep learning.
 
