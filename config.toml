@@ -1,61 +1,43 @@
 baseURL = "https://charliepitkin.com/"
 languageCode = "en-us"
-title = "Charile Pitkin"
 theme = "minimal"
-
+title = "Charile Pitkin"
+[[menu.icon]]
+name = "stack-overflow"
+url = "https://stackoverflow.com/users/7138991/charlie-pitkin"
+weight = 4
+[[menu.icon]]
+name = "linkedin"
+url = "https://www.linkedin.com/in/charlie-pitkin-b1701423/"
+weight = 3
+[[menu.icon]]
+name = "twitter"
+url = "https://twitter.com/charlespitkin/"
+weight = 2
+[[menu.icon]]
+name = "github"
+url = "https://github.com/cpitkin/"
+weight = 1
+[[menu.main]]
+name = "Projects"
+url = "/project/"
+weight = 3
+[[menu.main]]
+name = "Posts"
+url = "/post/"
+weight = 2
+[[menu.main]]
+name = "Home"
+url = "/"
+weight = 1
 [params]
-  accent = "black"
-  author = "Charlie Pitkin"
-  backgroundcolor = "white"
-  description = "more coming soon ..."
-  # font = "Raleway"
-  font = "News Cycle"
-  githubusername = "cpitkin"
-  highlight = true
-  highlightlanguages = ["javascript", "bash", "puppet", "json", "yaml"]
-  highlightstyle = "hybrid"
-  showborder = true
-
-[[menu.main]]
-    url = "/"
-    name = "Home"
-    weight = 1
-
-[[menu.main]]
-    url = "/post/"
-    name = "Posts"
-    weight = 2
-
-[[menu.main]]
-    url = "/project/"
-    name = "Projects"
-    weight = 3
-
-# Social icons to be shown on the right-hand side of the navigation bar
-# The "name" field should match the name of the icon to be used
-# The list of available icons can be found at http://fontawesome.io/icons/
-
-# [[menu.icon]]
-#     url = "mailto:me@example.com"
-#     name = "envelope-o"
-#     weight = 1
-
-[[menu.icon]]
-    url = "https://github.com/cpitkin/"
-    name = "github"
-    weight = 1
-
-[[menu.icon]]
-    url = "https://twitter.com/charlespitkin/"
-    name = "twitter"
-    weight = 2
-
-[[menu.icon]]
-    url = "https://www.linkedin.com/in/charlie-pitkin-b1701423/"
-    name = "linkedin"
-    weight = 3
-
-[[menu.icon]]
-    url = "https://stackoverflow.com/users/7138991/charlie-pitkin"
-    name = "stack-overflow"
-    weight = 4
+accent = "black"
+author = "Charlie Pitkin"
+backgroundcolor = "white"
+description = "more coming soon ..."
+font = "News Cycle"
+githubusername = "cpitkin"
+highlight = true
+highlightlanguages = ["javascript", "bash", "puppet", "json", "yaml"]
+highlightstyle = "hybrid"
+showborder = true
