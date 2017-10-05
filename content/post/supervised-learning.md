@@ -25,3 +25,5 @@ Start with a labeled training data set
 - target variable: unknown variable we care about predicting
 - continuous: no gaps (eg. a person's height and weight)
 - discrete: can only take a finite number of values (eg. number of kids)
+
+- mean squared error (mean squared deviation): estimator and what is estimated
