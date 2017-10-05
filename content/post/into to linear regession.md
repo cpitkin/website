@@ -2,7 +2,7 @@
 title: "Intro to Linear Regression"
 date: 2017-10-03
 tags: [ml, learning, practice, supervised learning]
-draft: false
+draft: true
 ---
 following [this](https://medium.com/@haydar_ai/learning-data-science-day-9-linear-regression-on-boston-housing-dataset-cd62a80775ef) tutorial by Haydar Ali Ismail
 
