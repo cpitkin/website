@@ -1,5 +1,5 @@
 ---
-title: "Supervised Learning"
+title: "Supervised Learning Notes"
 date: 2017-10-02T21:30:37-05:00
 draft: true
 ---
@@ -15,6 +15,8 @@ I am following [this](https://medium.com/machine-learning-for-humans/why-machine
 - linear regression
 - loss functions
 - gradient descent
+
+Y = f(X) + E
 
 Start with a labeled training data set
 
