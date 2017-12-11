@@ -37,8 +37,8 @@ We're going to be using Puppet to bootstrap Docker, Consul, and Nomad.
 4. Clone [this](https://github.com/cpitkin/puppet-openfaas-nomad.git) repo to your server
 5. `cd puppet-openfaas-nomad`
 6. `sudo su - && puppet apply --modulepath=modules setup.pp`
-7. Open <server_ip>:4646 in a browser to view the Nomad web UI
-8. 5. Open <server_ip>:8500 in a browser to view the Consul web UI
+7. Open \<server_ip\>:4646 in a browser to view the Nomad web UI
+8. Open \<server_ip\>:8500 in a browser to view the Consul web UI
 9. You are now ready to schedule jobs in Nomad
 
 ## OpenFaaS
