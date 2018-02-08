@@ -1,43 +1,44 @@
-baseURL = "https://charliepitkin.com/"
-languageCode = "en-us"
-theme = "minimal"
-title = "Charile Pitkin"
-[[menu.icon]]
-name = "stack-overflow"
-url = "https://stackoverflow.com/users/7138991/charlie-pitkin"
-weight = 4
-[[menu.icon]]
-name = "linkedin"
-url = "https://www.linkedin.com/in/cpitkin/"
-weight = 3
-[[menu.icon]]
-name = "twitter"
-url = "https://twitter.com/charlespitkin/"
-weight = 2
-[[menu.icon]]
-name = "github"
-url = "https://github.com/cpitkin/"
-weight = 1
+title = "Charlie Pitkin"
+baseURL = "https://charliepitkin.com"
+tags = ["projects", "open source", "posts"]
+languageCode = "en-US"
+config = "config.toml"
+theme = "osprey"
+canonifyURLS = true
+googleAnalytics = ""
+disqusShortname = ""
+disableKinds = ["taxonomy", "taxonomyTerm"] # This theme does not currently use "tag" and "category" taxonomies
+
+[Params]
+    tagline = "Devops Engineer | Open Source Enthusiast | Lifelong Learner"
+    author = "Charlie Pitkin"
+    description = "All the things!"
+    logoBig = "/img/kodai-ji-garen.png"
+    logoSmall = "/img/osaka-castle_400x400.jpg"
+    favicon = "icon.ico"
+    opengraphImage = "/img/osaka-castle_400x400.jpg"
+    twitter = "charlespitkin"
+    linkedin = "cpitkin"
+    github = "cpitkin"
+    email = ""
+    googleTagManger = ""
+    highlightJS = true
+    copyright = true
+    credit = true
+    customCSS = false
+    cacheBustCSS = false
+    cacheBustJS = false
+    ajaxFormspree = false
+
+# [[menu.main]]
+#     name = "About"
+#     url  = "/about"
+#     weight = 1
 [[menu.main]]
-name = "Projects"
-url = "/project/"
-weight = 3
-[[menu.main]]
-name = "Posts"
-url = "/post/"
-weight = 2
-[[menu.main]]
-name = "Home"
-url = "/"
-weight = 1
-[params]
-accent = "black"
-author = "Charlie Pitkin"
-backgroundcolor = "white"
-description = "Blog posts by me and projects I am working on"
-font = "News Cycle"
-githubusername = "cpitkin"
-highlight = true
-highlightlanguages = ["javascript", "bash", "puppet", "json", "yaml"]
-highlightstyle = "hybrid"
-showborder = true
+    name = "blog"
+    url  = "/blog"
+    weight = 2
+# [[menu.main]]
+#     name = "Contact"
+#     url  = "/contact"
+#     weight = 4
