@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blogs on Charlie Pitkin</title>
+    <link>https://charliepitkin.com/blog/</link>
+    <description>Recent content in Blogs on Charlie Pitkin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Sun, 10 Dec 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://charliepitkin.com/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Setup OpenFaaS Nomad</title>
+      <link>https://charliepitkin.com/blog/setup-openfaas-nomad/</link>
+      <pubDate>Sun, 10 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://charliepitkin.com/blog/setup-openfaas-nomad/</guid>
+      <description>Services  Docker Nomad Consul OpenFaaS  Setup We&amp;rsquo;re going to be using Puppet to bootstrap Docker, Consul, and Nomad.
+ Login and gain root access Install Puppet for your Ubuntu LTS version. Debian also works but for the sake of this tutorial we are going be to using Ubuntu. The Debian repos can be found here
+16.04 LTS
+wget https://apt.puppetlabs.com/puppet5-release-xenial.deb sudo dpkg -i puppet5-release-xenial.deb sudo apt update sudo apt-get install puppet-agent  14.</description>
+    </item>
+    
+    <item>
+      <title>Staring the Machine Learning Journey</title>
+      <link>https://charliepitkin.com/blog/starting-the-machine-learning-journey/</link>
+      <pubDate>Tue, 03 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://charliepitkin.com/blog/starting-the-machine-learning-journey/</guid>
+      <description>If you&amp;rsquo;re like me and read anything about the current goings on in the tech sector you know that machine learning is the new hotness. I have been watching parts of the space for a few years and it has always fascinated me how it works. Probably because I&amp;rsquo;m not a math wiz and the concepts need some in-depth explanations before you can really understand what all that crazy jargon even means.</description>
+    </item>
+    
+    <item>
+      <title>Redirect Test - A Nodejs Cli for testing redirects</title>
+      <link>https://charliepitkin.com/blog/redirect-test-release/</link>
+      <pubDate>Tue, 22 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://charliepitkin.com/blog/redirect-test-release/</guid>
+      <description>I work for an agency that runs a lot of client sites. We rarely get to build the first site to ever be served from a new domain. Since most of the work we do is taking the old outdated stuff and giving it new life, we have to make sure to bring along everyone for the new shiny ride. Of all the things that have to be done to get ready to launch, getting redirects in place and testing them is probably one of the most time-consuming.</description>
+    </item>
+    
+    <item>
+      <title>New Site</title>
+      <link>https://charliepitkin.com/blog/new-site/</link>
+      <pubDate>Wed, 16 Aug 2017 21:00:00 -0500</pubDate>
+      
+      <guid>https://charliepitkin.com/blog/new-site/</guid>
+      <description>So I decided to not go crazy about all this hosting stuff and make it super simple. The new site is built with Hugo and hosted on Netlify. I just published my first project to npm and want to start helping the open source community. I do a lot of this stuff in my day job but it never hurts to keep learning.
+I am also going to work hard at writing posts about the projects I am working on or just things I am interested in doing.</description>
+    </item>
+    
+    <item>
+      <title>Install Graylog on Freebsd 10.3</title>
+      <link>https://charliepitkin.com/blog/install-graylog-on-freebsd/</link>
+      <pubDate>Tue, 01 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://charliepitkin.com/blog/install-graylog-on-freebsd/</guid>
+      <description>I have always needed a central logging server at home. After setting up a couple for my day job I finally decided to setup one for my home servers. This guide is meant to serve as a way install Graylog into FreeBSD. The FreeBSD server is a jail running in FreeNAS 9.10. We are looking to install Graylog 1.3.3 with the web interface. I know Graylog has moved to 2.</description>
+    </item>
+    
+  </channel>
+</rss>
