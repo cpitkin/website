@@ -10,10 +10,10 @@ disqusShortname = ""
 disableKinds = ["taxonomy", "taxonomyTerm"] # This theme does not currently use "tag" and "category" taxonomies
 
 [Params]
-    tagline = "Devops Engineer | Open Source Enthusiast | Lifelong Learner"
+    tagline = "I'm Charlie, Devops Engineer + open source enthusiast"
     author = "Charlie Pitkin"
     description = "All the things!"
-    logoBig = "/img/kodai-ji-garen.png"
+    logoBig = "/img/osaka-castle.png"
     logoSmall = "/img/osaka-castle_400x400.jpg"
     favicon = "icon.ico"
     opengraphImage = "/img/osaka-castle_400x400.jpg"
@@ -37,7 +37,7 @@ disableKinds = ["taxonomy", "taxonomyTerm"] # This theme does not currently use 
 [[menu.main]]
     name = "blog"
     url  = "/blog"
-    weight = 2
+    weight = 1
 # [[menu.main]]
 #     name = "Contact"
 #     url  = "/contact"
