@@ -17,34 +17,34 @@ Minio is an open source S3 compatable object storage service. There are several 
 
 1. First we need to SSH into our FreeNAS server and edit the configuration in `/usr/local/etc/minio`.
 
-`nano /usr/local/etc/minio/config.json`
+    `nano /usr/local/etc/minio/config.json`
 
-There are a few things we need to update in the configuration so I'll go through them one at a time.
+    There are a few things we need to update in the configuration so I'll go through them one at a time.
 
-```json
-{
-...
-  "credential": {
-    "accessKey": "<access_key>",
-    "secretKey": "<secret_key>"
-  },
-  "region": "<region_name>",
-  ...
-  "notify": {
+    ```json
+    {
     ...
-    "webhook": {
-      "1": {
-        "enable": true,
-        "endpoint": "<OpenFaaS_Function_URL>"
+      "credential": {
+        "accessKey": "<access_key>",
+        "secretKey": "<secret_key>"
+      },
+      "region": "<region_name>",
+      ...
+      "notify": {
+        ...
+        "webhook": {
+          "1": {
+            "enable": true,
+            "endpoint": "<OpenFaaS_Function_URL>"
+          }
+        }
       }
     }
-  }
-}
-```
-**accessKey:** Random string used to identify a user
-**secretKey:** Random string used as a password
-**region:** This can be anything meaningful about where the Minio server is located on your network
-**endpoint:** The endpoint Minio will POST to when events happen in a bucket. We'll get into bucket events later.
+    ```
+    **accessKey:** Random string used to identify a user
+    **secretKey:** Random string used as a password
+    **region:** This can be anything meaningful about where the Minio server is located on your network
+    **endpoint:** The endpoint Minio will POST to when events happen in a bucket. We'll get into bucket events later.
 
 2. Go to the FreeNAS UI under the Services section. Click on the wrench next to the S3 label. Here you will need to fill in the IP, port, disks, and if you want to enable the web UI.
 
@@ -55,12 +55,23 @@ There are a few things we need to update in the configuration so I'll go through
     ![FreeNAS Minio Service UI](img/minio-service-start.png)
 
 4. Create a bucket called transcode. You can do this through the UI or with the Minio client (mc) cli tool.
-`mc mb <minio_server_alias>/<bucket_name> --region <region>`
+
+    `mc mb <minio_server_alias>/<bucket_name> --region <region>`
 
 5. Now we need to create a bucket notification to trigger on object put events. Using the mc tool we can enter the following to set the event trigger.
-`mc events add <minio_server_alias>/<bucket_name> arn:minio:sqs:<region>:1:webhook --events put --suffix .mkv`
+
+    `mc events add <minio_server_alias>/<bucket_name> arn:minio:sqs:<region>:1:webhook --events put --suffix .mkv`
+
+## Setup Docker volumes over NFS
+
+I know this is not ideal and will be publishing an update in the near future to make improvements. For now you will need to mount 3 Docker volumes over NFS to use with the trancode container.
+
+    - tv
+    - movies
+    - minio
 
 ## Setup OpenFaaS
+
 We will build a function to talk to the Nomad API. This function's primary job is to schedule batch jobs in Nomad. This provides several benefits over using the async queue worker. You get resource monitoring and job queueing for free. Since Nomad, or any scheduler, won't overallocate a node's resources. This means we can safly schedule lots of jobs on a single node knowing they will be processed when resources are available. Since we want this to be efficient and as automated as possible we can upload as many videos to the bucket as we want and the transcode job will get scheduled.
 
 Here is an example JSON object from a Minio put operation.
@@ -116,4 +127,5 @@ The function code can be found [here](https://github.com/cpitkin/nomad-openfaas-
 The actual transcoding is done by an awesome piece of software from [Don Melton](https://github.com/donmelton/video_transcoding). Huge kudos to him for building and maintaining such a great piece of software. All I did was package the software into a Docker container for portability and easy dependancy management. The container used byt the Nomad job can be found [here](https://hub.docker.com/r/cpitkin/video_transcode/).
 
 ## Uploading to Minio
+
 At this point you should just need to start uploading code to Minio. I have a handy Nodejs script to do just that [here](https://github.com/cpitkin/video-upload/releases)
