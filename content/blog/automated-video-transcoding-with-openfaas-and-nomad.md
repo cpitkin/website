@@ -141,7 +141,7 @@ If you want to know how to setup Nomad and OpenFaaS refer to my previous post [h
 
 #### OpenFaaS
 
-We will build a function to talk to the Nomad API. This function's primary job is to schedule batch jobs in Nomad. This provides several benefits over using the async queue worker. You get resource monitoring and job queueing for free. Since Nomad, or any scheduler, won't overallocate a node's resources. This means we can safly schedule lots of jobs on a single node knowing they will be processed when resources are available. Since we want this to be efficient and as automated as possible we can upload as many videos to the bucket as we want and the transcode job will get scheduled.
+We will build a function to talk to the Nomad API. This function's primary job is to schedule batch jobs in Nomad. Since Nomad, or any scheduler, won't overallocate a node's resources. This means we can safely schedule lots of jobs across out client nodes knowing they will be processed when resources are available. Since we want this to be efficient and as automated as possible we can upload as many videos to the bucket as we want and the transcode job will get scheduled and proccessed when resources are available.
 
 Here is an example JSON object from a Minio put operation.
 
