@@ -16,19 +16,19 @@ If you want to know how to setup Nomad and OpenFaaS refer to my previous post [h
 
 ## Considerations
 
-- Transcoding is a very CPU entensive task. Regardless of how you configure the setup it is going to take significant CPU and disk i/o resources. That being said you can run this setup on pretty much any hardware but the more resources you give the transcode container the faster it will run. This setup has been tested using a Ubuntu Linux box with a 6 core 3.5 Ghz AMD processor.
+- Transcoding is a very CPU intensive task. Regardless of how you configure the setup, it is going to take significant CPU and disk i/o resources. That being said you can run this setup on pretty much any hardware but the more resources you give the transcode container the faster it will run. This setup has been tested using an Ubuntu Linux box with a 6 core 3.5 GHz AMD processor.
 
-- We will be uploading raw video to one bucket (transcode) and placing the transcoded video in another ducket (complete). This means you will need enough disk space to accomodate at least your original file size*2. Ideally, for lots of files, you would want at least 500GB of free space.
+- We will be uploading raw video to one bucket (transcode) and placing the transcoded video in another bucket (complete). This means you will need enough disk space to accommodate at least your original file size*2. Ideally, for lots of files, you would want at least 500GB of free space.
 
 ### Setup
 
 #### Minio
 
-1. First we need to login to the machine and create a couple of directories for us to use. We will need one to mount for the configs and one to mount for storage. Run the following as root to make the needed directories.
+1. First, we need to login to the machine and create a couple of directories for us to use. We will need one to mount for the configs and one to mount for storage. Run the following as root to make the needed directories.
 
     `sudo mkdir {/mino,/transcode}`
 
-2. Next we are going to setup a Minio server on our compute node using Nomad. Then we get the benefits of having Nomad manage the resources for us. First we need a Nomad job file. You need to copy the below job file and save it to minio.hcl
+2. Next, we are going to set up a Minio server on our compute node using Nomad. Then we get the benefits of having Nomad manage the resources for us. First, we need a Nomad job file. You need to copy the below job file and save it to minio.hcl
 
     ```hcl
       job "minio" {
@@ -135,13 +135,13 @@ If you want to know how to setup Nomad and OpenFaaS refer to my previous post [h
     Edit:
       - webhook
 
-4. Finally we need to restart the job for the changes to take effect. Run the following in the same place you saved the Nomad job file.
+4. Finally, we need to restart the job for the changes to take effect. Run the following in the same place you saved the Nomad job file.
 
     `nomad stop minio.hcl && nomad run minio.hcl`
 
 #### OpenFaaS
 
-We will build a function to talk to the Nomad API. This function's primary job is to schedule batch jobs in Nomad. Since Nomad, or any scheduler, won't overallocate a node's resources. This means we can safely schedule lots of jobs across out client nodes knowing they will be processed when resources are available. Since we want this to be efficient and as automated as possible we can upload as many videos to the bucket as we want and the transcode job will get scheduled and proccessed when resources are available.
+We will build a function to talk to the Nomad API. This function's primary job is to schedule batch jobs in Nomad. Since Nomad, or any scheduler, won't over-allocate a node's resources. This means we can safely schedule lots of jobs across out client nodes knowing they will be processed when resources are available. Since we want this to be efficient and as automated as possible we can upload as many videos to the bucket as we want and the transcode job will get scheduled and processed when resources are available.
 
 Here is an example JSON object from a Minio put operation.
 
@@ -195,8 +195,8 @@ The function code can be found [here](https://github.com/cpitkin/nomad-openfaas-
 
 ## Transcoding
 
-The actual transcoding is done by an awesome piece of software from [Don Melton](https://github.com/donmelton/video_transcoding). Huge kudos to him for building and maintaining such a great piece of software. All I did was package the software into a Docker container for portability and easy dependancy management. The container used byt the Nomad job can be found [here](https://hub.docker.com/r/cpitkin/video_transcode/).
+The actual transcoding is done by an awesome piece of software from [Don Melton](https://github.com/donmelton/video_transcoding). Huge kudos to him for building and maintaining such a great piece of software. All I did was package the software into a Docker container for portability and easy dependency management. The container used by the Nomad job can be found [here](https://hub.docker.com/r/cpitkin/video_transcode/).
 
 ## Uploading to Minio
 
-At this point you should just need to start uploading code to Minio. I have a handy Go binary to do just that [here](https://github.com/cpitkin/video-upload/releases). Checkout the REAME for details.
+At this point, you should just need to start uploading code to Minio. I have a handy Go binary to do just that [here](https://github.com/cpitkin/video-upload/releases). Check out the README for details.
