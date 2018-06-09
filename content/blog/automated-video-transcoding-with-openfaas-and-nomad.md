@@ -1,18 +1,21 @@
 ---
-title: "Automated Video Transcoding with OpenFaaS, Minio, and Nomad"
-date: 2018-02-24
+title: "Automated Video Transcoding with OpenFaaS"
+date: 2018-06-09
 linktitle: Automated Video Transcoding
 draft: false
 ---
 
-If you want to know how to setup Nomad and OpenFaaS refer to my previous post [here](https://charliepitkin.com/post/setup-openfaas-nomad/).
+# Purpose
 
-## Services
+I have a very large movie collection and we use Plex to keep it organized and easy to manage. That means a lot of storage space is needed for movie files, especially when they are Blue-ray. To save space on disk while maintaining the good quality I built this transcode pipeline to automate the process of adding a new movie to the library. You can find the repo [here](https://github.com/cpitkin/openfaas-transcode)
 
-- [Minio](https://minio.io/)
-- Docker
-- OpenFaaS
-- Nomad
+## Uploader
+
+The companion uploader executable can be found [here](https://github.com/cpitkin/video-upload/)
+
+# Architecture
+
+![architecuture diagram](/img/tp.png)
 
 ## Considerations
 
@@ -22,181 +25,85 @@ If you want to know how to setup Nomad and OpenFaaS refer to my previous post [h
 
 ### Setup
 
-#### Minio
+### Prerequisites
 
-1. First, we need to login to the machine and create a couple of directories for us to use. We will need one to mount for the configs and one to mount for storage. Run the following as root to make the needed directories.
+You will need a one or two Minio servers setup. In my case, I use two located on two different physical servers but you can easily do it with one.
 
-    `sudo mkdir {/mino,/transcode}`
+Buckets:
 
-2. Next, we are going to set up a Minio server on our compute node using Nomad. Then we get the benefits of having Nomad manage the resources for us. First, we need a Nomad job file. You need to copy the below job file and save it to minio.hcl
+- transcode
+- complete
+- movies
+- tv
 
-    ```hcl
-      job "minio" {
+#### Minio config
 
-      datacenters = [
-        "dc1"
-      ]
-
-      priority = 10
-
-      group "cluster" {
-        count = 1
-
-        restart {
-          attempts = 3
-          delay    = "5s"
-          interval = "10m"
-          mode     = "delay"
-        }
-
-        task "minio" {
-          driver = "docker"
-          config {
-            image = "minio/minio",
-            command = "server",
-            args = [
-              "/transcode"
-            ],
-            port_map {
-              http = 9000
-            }
-
-            volumes = [
-              "/transcode:/transcode",
-              "/minio:/root/.minio"
-            ]
-          }
-
-          resources {
-            cpu = 500
-            memory = 512
-            network {
-              port "http" {
-                static = 9000
-              }
-            }
-          }
-
-          service {
-            tags = [
-              "transcode-minio"
-            ]
-            name = "transcode-minio"
-            port = "http"
-
-            check {
-              type = "http"
-              protocol = "http"
-              method = "GET"
-              port = "http"
-              path = "/"
-              interval = "10s"
-              timeout  = "2s"
-            }
-          }
-        }
-      }
-    }
-    ```
-
-3. Once the container starts for the first time you will need to get the access key and secret that were generated at startup. We need to login to the compute node and edit the config file and grab the access key and secret. The edits for the config are below.
-
-    ```json
-    {
-      ...
-      "credential": {
-              "accessKey": "<random_string>",
-              "secretKey": "<random_string>"
-      },
-      "region": "rapture",
-      "browser": "on",
-      "domain": "",
-      "storageclass": {
-              "standard": "",
-              "rrs": ""
-      },
-      "notify": {
-        ...
-        "webhook": {
-          "1": {
-            "enable": true,
-            "endpoint": "http://faas.rapture:8080/function/transcode-video"
-          }
-        }
-        ...
-      }
-    }
-    ```
-
-    Copy:
-      - accessKey
-      - secretKey
-
-    Edit:
-      - webhook
-
-4. Finally, we need to restart the job for the changes to take effect. Run the following in the same place you saved the Nomad job file.
-
-    `nomad stop minio.hcl && nomad run minio.hcl`
-
-#### OpenFaaS
-
-We will build a function to talk to the Nomad API. This function's primary job is to schedule batch jobs in Nomad. Since Nomad, or any scheduler, won't over-allocate a node's resources. This means we can safely schedule lots of jobs across out client nodes knowing they will be processed when resources are available. Since we want this to be efficient and as automated as possible we can upload as many videos to the bucket as we want and the transcode job will get scheduled and processed when resources are available.
-
-Here is an example JSON object from a Minio put operation.
+You should set the Access Key, Secret Key, and webhook values before deploying the container. That will save you the hassle of getting the generated keys and setting the webhook later and needing to restart the container. An example config is below:
 
 ```json
 {
-  "EventType": "s3:ObjectCreated:Put",
-  "Key": "example-bucket/file.jpg",
-  "Records": [{
-    "eventVersion": "2.0",
-    "eventSource": "aws:s3",
-    "awsRegion": "us-west-2",
-    "eventTime": "2017-12-02T15:14:21Z",
-    "eventName": "s3:ObjectCreated:Put",
-    "userIdentity": {
-      "principalId": "F8F7ot2RxqtTdpwF2DBq"
-    },
-    "requestParameters": {
-      "sourceIPAddress": "192.168.1.1:59661"
-    },
-    "responseElements": {
-      "x-amz-request-id": "14FC8361D03D09D6",
-      "x-minio-origin-endpoint": "http://minio-server:9000"
-    },
-    "s3": {
-      "s3SchemaVersion": "1.0",
-      "configurationId": "Config",
-      "bucket": {
-        "name": "example-bucket",
-        "ownerIdentity": {
-          "principalId": "F8F7ot2RxqtTdpwF2DBq"
-        },
-        "arn": "arn:aws:s3:::images"
-      },
-      "object": {
-        "key": "file.jpg",
-        "size": 6166,
-        "eTag": "e856d62fe0ab35a45c47b876af2415bc",
-        "sequencer": "14FC8361D03D09D6"
+  ...
+  "credential": {
+          "accessKey": "<random_string>",
+          "secretKey": "<random_string>"
+  },
+  "region": "rapture",
+  "browser": "on",
+  "domain": "",
+  "storageclass": {
+          "standard": "",
+          "rrs": ""
+  },
+  "notify": {
+    ...
+    "webhook": {
+      "1": {
+        "enable": true,
+        "endpoint": "http://<IP or URL>:8080/function/transcode-entrypoint"
       }
     }
-  }],
-  "level": "info",
-  "msg": "",
-  "time": "2017-12-02T09:14:21-06:00"
+    ...
+  }
 }
 ```
 
-Using the above object we can get the needed data for scheduling a Nomad job.
+**NOTE:** If you're using the uploader executable mentioned above then the PutObject event trigger will be set for you. If you will need to manually set a PutObject event trigger for the webhook on the transcode bucket.
 
-The function code can be found [here](https://github.com/cpitkin/nomad-openfaas-transcode-video).
+## OpenFaaS Functions (in order)
 
-## Transcoding
+### transcode-entrypoint
 
-The actual transcoding is done by an awesome piece of software from [Don Melton](https://github.com/donmelton/video_transcoding). Huge kudos to him for building and maintaining such a great piece of software. All I did was package the software into a Docker container for portability and easy dependency management. The container used by the Nomad job can be found [here](https://hub.docker.com/r/cpitkin/video_transcode/).
+This is the entry point into the pipeline that is used to start the process. You can also add things like Slack integration calls here.
 
-## Uploading to Minio
+### transcode-worker
 
-At this point, you should just need to start uploading code to Minio. I have a handy Go binary to do just that [here](https://github.com/cpitkin/video-upload/releases). Check out the README for details.
+This is the main worker for the pipeline. The worker is called using the `/async-function` endpoint. This allows the transcoding to take hours without holding up adding new media to the queue. Since NATS is used in the background we can pull media from the queue as the transcode function finishes. The transcoding itself is done by a great Ruby executable found [here](https://github.com/donmelton/video_transcoding). Huge shoutout to donmelton for making a great library.
+
+#### Note on async worker timeout
+
+You should set the queue-worker environment variable `ack_timeout` to a suitable value based on the number of computing resources of each node. I have a 6 core processor doing the lifting with the `ack_timeout` set to 28800s (8 hours). This has worked well for me so far since some Blue-ray media can be in the 30-40 GB range.
+
+#### Steps
+
+- Download the media from the `transcode` Minio bucket
+- Transcode the media into `/tmp`
+- Upload the finished file to the `complete` Minio bucket
+- Delete the raw file from the local container
+
+### transcode-move
+
+This step moves the completed media file from the `complete` Minio bucket to another Minio server of your choice.
+
+#### Steps
+
+- Download from the `complete` bucket
+- Upload to the `media` bucket on another server
+
+### transcode-delete
+
+This function just provides clean up for the raw and intermediary files. We wait until the end to clean up so we can debug if something failed to move between buckets or severs.
+
+#### Steps
+
+- Check for the presence of the media at the final destination
+- Delete the media from the `complete` and `transcode` buckets on the other server
