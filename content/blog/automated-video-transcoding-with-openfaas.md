@@ -19,15 +19,17 @@ The companion uploader executable can be found [here](https://github.com/cpitkin
 
 ## Considerations
 
-- Transcoding is a very CPU intensive task. Regardless of how you configure the setup, it is going to take significant CPU and disk i/o resources. That being said you can run this setup on pretty much any hardware but the more resources you give the transcode container the faster it will run. This setup has been tested using an Ubuntu Linux box with a 6 core 3.5 GHz AMD processor.
+- Transcoding is a very CPU intensive task. Regardless of how you configure the setup, it is going to take significant CPU and disk i/o resources. That being said you can run this setup on pretty much any hardware but the more resources you give the transcode container the faster it will run. This setup has been tested using an Ubuntu Linux box with an AMD FX-6300 Six-Core Processor at 3.5 GHz and 16 GB of RAM.
 
-- We will be uploading raw video to one bucket (transcode) and placing the transcoded video in another bucket (complete). This means you will need enough disk space to accommodate at least your original file size*2. Ideally, for lots of files, you would want at least 500GB of free space.
+- We will be uploading raw video to one bucket (transcode) and placing the transcoded video in another bucket (complete). This means you will need enough disk space to accommodate at least your original file size*2. Since you want to upload files continuously you will need enough space to hold the raw files plus the smaller files until the move function can put them in the correct place.
+
+    Example: Blue-rays are around 25 GB in size but the transcoded version will be in the 10-12 GB range. That means, you will need roughly 600 GB to hold them all until clean up happens. `(25 GB * 15 raw files) + (12 GB * 15 transcoded files) = 555 GB`
 
 ### Setup
 
 ### Prerequisites
 
-You will need a one or two Minio servers setup. In my case, I use two located on two different physical servers but you can easily do it with one.
+You will need a one or two Minio servers setup. In my case, I use two located on two different physical servers but you can easily do it with one. Since it is a bit out of the scope of this post I'm not going to go into detail but [here](https://docs.minio.io/docs/minio-docker-quickstart-guide) is a link to the Docker quickstart guide. 
 
 Buckets:
 
