@@ -28,3 +28,14 @@ HUGO_VERSION = "0.55.6"
 
 [context.next.environment]
 HUGO_ENABLEGITINFO = "true"
+
+[[redirects]]
+  from = "/install-graylog-on-freebsd"
+  to = "/posts/install-graylog-on-freebsd"
+  status = 301
+  force = false
+[[redirects]]
+  from = "/blog"
+  to = "/posts"
+  status = 301
+  force = false
