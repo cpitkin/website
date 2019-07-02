@@ -1,4 +1,0 @@
-/install-graylog-on-freebsd /blog/install-graylog-on-freebsd
-/post /blog
-/post/* /blog/:splat
-/search /

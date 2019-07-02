@@ -14,3 +14,6 @@
 .glide/
 
 public
+
+# IDE files
+.vscode
