@@ -1,3 +1,5 @@
 # My personal website
 
-It is more like a blog really but may be expanded in the future. I don't push posts often but try to add content for things I am working on.
+How to format for OG and Twitter: [here](https://gohugo.io/templates/internal/)
+
+hell-friend-ng [Theme](https://github.com/rhazdon/hugo-theme-hello-friend-ng)

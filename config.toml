@@ -1,44 +1,83 @@
-title = "Charlie Pitkin"
-baseURL = "https://charliepitkin.com"
-tags = ["projects", "open source", "posts"]
-languageCode = "en-US"
-config = "config.toml"
-theme = "osprey"
-canonifyURLS = true
-googleAnalytics = ""
-disqusShortname = ""
-disableKinds = ["taxonomy", "taxonomyTerm"] # This theme does not currently use "tag" and "category" taxonomies
+baseurl = "https://charliepitkin.com"
 
-[Params]
-    tagline = "I'm Charlie, Devops Engineer + open source enthusiast"
-    author = "Charlie Pitkin"
-    description = "All the things!"
-    logoBig = "/img/osaka-castle.png"
-    logoSmall = "/img/osaka-castle_400x400.jpg"
-    favicon = "icon.ico"
-    opengraphImage = "/img/osaka-castle_400x400.jpg"
-    twitter = "charlespitkin"
-    linkedin = "cpitkin"
-    github = "cpitkin"
-    email = ""
-    googleTagManger = ""
-    highlightJS = true
-    copyright = true
-    credit = true
-    customCSS = false
-    cacheBustCSS = false
-    cacheBustJS = false
-    ajaxFormspree = false
+# Theme information
+languageCode = "en"
+theme = "hello-friend-ng"
+defaultTheme = "dark"
 
-# [[menu.main]]
-#     name = "About"
-#     url  = "/about"
-#     weight = 1
-[[menu.main]]
-    name = "blog"
-    url  = "/blog"
-    weight = 1
-# [[menu.main]]
-#     name = "Contact"
-#     url  = "/contact"
-#     weight = 4
+# Default directory names for templates
+contentTypeName = "posts"
+
+# Syntax highlighting - https://gohugo.io/content-management/syntax-highlighting/
+PygmentsCodeFences = true
+# PygmentsStyle = "monokai"
+
+# RSS settings
+disableRSS = false
+rssLimit  = 10
+copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License."
+
+# General settings
+enableRobotsTXT = true
+enableEmoji     = true
+enableMissingTranslationPlaceholders = false
+disableSitemap = false
+disable404     = false
+disableHugoGeneratorInject = false
+
+# Enable Git commit links in posts
+enableGitInfo = true
+gitUrl = "https://github.com/cpitkin/website" # Prefix of link to the git commit detail page
+
+# Parameters to configure general site look and feel
+[params]
+  dateform        = "Jan 2, 2006"
+  dateformShort   = "Jan 2"
+  dateformNum     = "2006-01-02"
+  dateformNumTime = "2006-01-02 15:04 -0700"
+  [[params.social]]
+    name = "twitter"
+    url  = "https://twitter.com/CharlesPitkin"
+  [[params.social]]
+    name = "github"
+    url  = "https://github.com/cpitkin"
+  [[params.social]]
+    name = "linkedin"
+    url = "https://www.linkedin.com/in/cpitkin/"
+
+  # Open Graph & Twitter cards - https://gohugo.io/templates/internal/#configure-open-graph
+  description = "My small corner of the Internet"
+  images = ["feature-image.jpg"]
+
+  # How we group content
+  [taxonomies]
+    category = "categories"
+    series = "series"
+    tag = "tags"
+
+# Set language and home page content
+DefaultContentLanguage = "en"
+[languages]
+  [languages.en]
+    title = "Charlie Pitkin"
+    homeSubtitle = "Automation - Open Source Software - Gaming - Travel"
+    keywords = "DevOps,Programming,Automation,Gaming,Open Source Software,Travel"
+    copyright = ""
+    readOtherPosts = "Read other posts"
+
+    [languages.en.params.logo]
+      logoText = "$ /home/cpitkin"
+      logoHomeLink = "/"
+    # path = "/img/kodai-ji-garden.png"
+    # alt = "Your example logo alt text"
+
+    # The en language menu
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+        identifier = "about"
+        name = "About"
+        url = "/about"
+      [[languages.en.menu.main]]
+        identifier = "blog"
+        name = "Blog"
+        url = "/posts"
