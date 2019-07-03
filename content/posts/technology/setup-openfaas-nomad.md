@@ -4,7 +4,7 @@ title = "Setup OpenFaaS Nomad with Puppet"
 description = "Easily get a single node OpenFaaS cluster running on Nomad with Puppet"
 images = ["posts/michael-walter-lLgQxglA-pE-unsplash.jpg"]
 tags = ["nomad", "openfaas", "open source", "docker"]
-categories = ["tutorial"]
+categories = ["technology"]
 +++
 
 ## Services

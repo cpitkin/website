@@ -3,7 +3,7 @@ date = "2017-08-01"
 title = "Install Graylog on Freebsd 10.3"
 description = "Installing Graylog2 as a central logging server"
 tags = ["graylog","open source"]
-categories = ["tutorial"]
+categories = ["technology"]
 +++
 
 I have always needed a central logging server at home. After setting up a couple for my day job I finally decided to setup one for my home servers. This guide is meant to serve as a way install Graylog into FreeBSD. The FreeBSD server is a jail running in FreeNAS 9.10. We are looking to install Graylog 1.3.3 with the web interface. I know Graylog has moved to 2.0 but as of now, the FreeBSD packages are on version 1.3.3. This setup has been working on my server for 15 days so far with an input of 3-6 msgs a second. This guide assumes you already have access to the machine via ssh. [Graylog]: (https://www.graylog.org)
