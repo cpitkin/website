@@ -44,6 +44,9 @@ enableGitInfo = true
   [[params.social]]
     name = "linkedin"
     url = "https://www.linkedin.com/in/cpitkin/"
+  [[params.social]]
+    name = "Resume"
+    url = "https://ceev.io/@cpitkin"
 
   # Open Graph & Twitter cards - https://gohugo.io/templates/internal/#configure-open-graph
   description = "My small corner of the Internet"
@@ -62,7 +65,7 @@ DefaultContentLanguage = "en"
     title = "Charlie Pitkin"
     homeSubtitle = "Automation - Open Source Software - Gaming - Travel"
     keywords = "DevOps,Programming,Automation,Gaming,Open Source Software,Travel"
-    copyright = "Copyright 2019 - Charlie Pitkin"
+    copyright = "Charlie Pitkin"
     readOtherPosts = "Read other posts"
 
     [languages.en.params.logo]
