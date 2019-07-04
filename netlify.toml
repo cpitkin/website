@@ -31,11 +31,31 @@ HUGO_ENABLEGITINFO = "true"
 
 [[redirects]]
   from = "/install-graylog-on-freebsd"
-  to = "/posts/install-graylog-on-freebsd"
+  to = "/posts/technology/install-graylog-on-freebsd"
   status = 301
   force = false
 [[redirects]]
-  from = "/blog"
-  to = "/posts"
+  from = "/posts/new-site/"
+  to = "/posts/news/new-site/"
+  status = 301
+  force = false
+[[redirects]]
+  from = "/posts/automated-video-transcoding-with-openfass"
+  to = "/posts/technology/automated-video-transcoding-with-openfass"
+  status = 301
+  force = false
+[[redirects]]
+  from = "/posts/install-graylog-on-freebsd"
+  to = "/posts/technology/install-graylog-on-freebsd"
+  status = 301
+  force = false
+[[redirects]]
+  from = "/posts/redirect-test-release"
+  to = "/posts/technology/redirect-test-release"
+  status = 301
+  force = false
+[[redirects]]
+  from = "/posts/setup-openfaas-nomad"
+  to = "/posts/technology/setup-openfaas-nomad"
   status = 301
   force = false

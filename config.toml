@@ -15,7 +15,7 @@ PygmentsCodeFences = true
 # RSS settings
 disableRSS = false
 rssLimit  = 10
-copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License."
+copyright = "2019 Charlie Pitkin"
 
 # General settings
 enableRobotsTXT = true
@@ -27,7 +27,6 @@ disableHugoGeneratorInject = false
 
 # Enable Git commit links in posts
 enableGitInfo = true
-gitUrl = "https://github.com/cpitkin/website" # Prefix of link to the git commit detail page
 
 # Parameters to configure general site look and feel
 [params]
@@ -35,6 +34,7 @@ gitUrl = "https://github.com/cpitkin/website" # Prefix of link to the git commit
   dateformShort   = "Jan 2"
   dateformNum     = "2006-01-02"
   dateformNumTime = "2006-01-02 15:04 -0700"
+  gitUrl = "https://github.com/cpitkin/website/commit/"
   [[params.social]]
     name = "twitter"
     url  = "https://twitter.com/CharlesPitkin"
@@ -44,6 +44,9 @@ gitUrl = "https://github.com/cpitkin/website" # Prefix of link to the git commit
   [[params.social]]
     name = "linkedin"
     url = "https://www.linkedin.com/in/cpitkin/"
+  [[params.social]]
+    name = "Resume"
+    url = "https://ceev.io/@cpitkin"
 
   # Open Graph & Twitter cards - https://gohugo.io/templates/internal/#configure-open-graph
   description = "My small corner of the Internet"
@@ -62,7 +65,7 @@ DefaultContentLanguage = "en"
     title = "Charlie Pitkin"
     homeSubtitle = "Automation - Open Source Software - Gaming - Travel"
     keywords = "DevOps,Programming,Automation,Gaming,Open Source Software,Travel"
-    copyright = ""
+    copyright = "Charlie Pitkin"
     readOtherPosts = "Read other posts"
 
     [languages.en.params.logo]

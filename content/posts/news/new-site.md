@@ -2,7 +2,8 @@
 date = "2017-08-16"
 title = "New Site Hosting"
 description = "Migrated the site to Hugo"
-images = ["posts/martijn-baudoin-4h0HqC3K4-c-unsplash.jpg"]
+cover = "posts/news/martijn-baudoin-4h0HqC3K4-c-unsplash.jpg?nf_resize=fit&w=1200&h=630"
+images = ["posts/news/martijn-baudoin-4h0HqC3K4-c-unsplash.jpg?nf_resize=fit&w=1200&h=630"]
 tags = ["news"]
 categories = ["news"]
 +++
