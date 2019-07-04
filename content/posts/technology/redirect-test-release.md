@@ -2,7 +2,8 @@
 date = "2017-08-22"
 title = "Redirect Test Cli"
 description = "Redirect Test - A Nodejs Cli for testing redirects"
-images = ["posts/shahadat-shemul-BfrQnKBulYQ-unsplash.jpg"]
+images = ["posts/technology/shahadat-shemul-BfrQnKBulYQ-unsplash.jpg"]
+cover = "posts/technology/shahadat-shemul-BfrQnKBulYQ-unsplash.jpg"
 tags = ["nodejs", "npm", "open source"]
 categories = ["technology"]
 +++

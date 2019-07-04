@@ -3,6 +3,7 @@ date = "2018-06-09"
 title = "Automated Video Transcoding with OpenFaaS"
 description = "Transcoding video using OpenFaaS functions as a long running job"
 cover = "posts/technology/quinten-de-graaf-L4gN0aeaPY4-unsplash.jpg"
+images = ["posts/technology/quinten-de-graaf-L4gN0aeaPY4-unsplash.jpg"]
 tags = ["open source", "openfaas", "nomad", "minio", "automation", "docker"]
 categories = ["technology"]
 +++
