@@ -84,3 +84,7 @@ DefaultContentLanguage = "en"
         identifier = "blog"
         name = "Blog"
         url = "/posts"
+      [[languages.en.menu.main]]
+        identifier = "travels"
+        name = "Travels"
+        url = "/travels/map"
