@@ -64,3 +64,7 @@ HUGO_ENABLEGITINFO = "true"
   to = "/posts/technology/setup-openfaas-nomad"
   status = 301
   force = false
+[[redirects]]
+  from = "/travels/map"
+  to = "https://nomadlist.com/@cpitkin"
+  status = 200
