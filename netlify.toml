@@ -30,6 +30,11 @@ HUGO_VERSION = "0.55.6"
 HUGO_ENABLEGITINFO = "true"
 
 [[redirects]]
+  from = "/blog"
+  to = "/posts"
+  status = 301
+  force = false
+[[redirects]]
   from = "/install-graylog-on-freebsd"
   to = "/posts/technology/install-graylog-on-freebsd"
   status = 301
